@@ -25,6 +25,8 @@ class RateBartender extends Component {
       expertSelect: 'Please click 👎 or 👍 to rate this Metric',
       friendlySelect: 'Please click 👎 or 👍 to rate this Metric',
       quickSelect: 'Please click 👎 or 👍 to rate this Metric',
+      hotSelect: 'Is you bartender hot?',
+      hookSelect: 'Does your bartender hook you up (with free drinks)?'
 
     }
   }
@@ -42,6 +44,8 @@ class RateBartender extends Component {
       expertSelect: 'Please click 👎 or 👍 to rate this Metric',
       friendlySelect: 'Please click 👎 or 👍 to rate this Metric',
       quickSelect: 'Please click 👎 or 👍 to rate this Metric',
+      hookSelect: 'Is you bartender hot?',
+      hotSelect: 'Does your bartender hook you up (with free drinks)?'
     });
 
     console.log(context.state);
@@ -224,6 +228,26 @@ class RateBartender extends Component {
     $('#quick').hide();
   }
 
+  ratePepper () {
+    var context = this;
+    this.setState({
+      hotSelect: 'Thanks for passing 🌶 Props!'
+    });
+
+    $('#pepper').hide();
+  }
+
+  rateHook () {
+    var context = this;
+    this.setState({
+      hookSelect: 'Thanks for passing 🎣 Props!'
+    });
+
+
+    $('#hook').hide();
+  }
+
+
   componentDidMount() { 
     
   }
@@ -244,6 +268,15 @@ class RateBartender extends Component {
         <span>{this.state.quickSelect}</span><br />
         <div id="quick">
           <button onClick={this.downvoteQuick.bind(this)} className='btn btn-danger'>👎</button>-----SPEED-----<button onClick={this.upvoteQuick.bind(this)} className='btn btn-success'>👍</button><br />
+        </div>
+        <h5>Pass Props: </h5>
+          <span>{this.state.hotSelect}</span><br />
+          <div id="pepper">
+            <button onClick={this.ratePepper.bind(this)} className='btn btn-success'>🌶</button><br />
+          </div>
+          <span>{this.state.hookSelect}</span><br />
+        <div id="hook">
+          <button onClick={this.rateHook.bind(this)} className='btn btn-success'>🎣</button><br />
         </div>
         <h5>Click Below To Sumbit</h5>
         <button onClick={this.submitRating.bind(this)} className='btn btn-primary'>Submit Rating</button>
